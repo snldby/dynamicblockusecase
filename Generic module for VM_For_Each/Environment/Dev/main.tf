@@ -1,3 +1,5 @@
+
+# new rg code
 module "rg" {
     source = "../../Module/RG"
     rg_name = var.rg_name
