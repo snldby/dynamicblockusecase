@@ -1,0 +1,19 @@
+trigger:
+- main
+- feaature/*
+pool: MeraNewRobot
+steps:
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'MyNewConnection'
+    backendAzureRmStorageAccountName: 'stg9mar2026'
+    backendAzureRmContainerName: 'tfstate'
+    backendAzureRmKey: 'prod.terraform.tfstate'
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      pwd
+      ls
